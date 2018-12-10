@@ -17,9 +17,9 @@ class ProdutoCrud
     }
 
     public function getProduto($id){
-        $consulta = $this->conexao->query("select * from produto WHERE id_produto=".$id);
+        $consulta = $this->conexao->query("select * from produto WHERE id=".$id);
         $produto = $consulta->fetch(PDO::FETCH_ASSOC);
-        return new Produto($produto['id_produto'], $produto['nome_produto'], $produto['descricao_produto'], $produto['preco_produto'], $produto['foto_produto'], $produto['id_categoria']);
+        return new Produto($produto['id'], $produto['nome'], $produto['descricao'], $produto['foto'], $produto['preco'], $produto['id_categoria']);
     }
 
     public function getProdutos(){
@@ -27,17 +27,17 @@ class ProdutoCrud
         $produtos = $consulta->fetchAll(PDO::FETCH_ASSOC);
         $listaProdutos = [];
         foreach ($produtos as $produto){
-            $listaProdutos[] = new Produto($produto['id_produto'], $produto['nome_produto'], $produto['descricao_produto'], $produto['preco_produto'], $produto['foto_produto'], $produto['id_categoria']);
+            $listaProdutos[] = new Produto($produto['id'], $produto['nome'], $produto['descricao'], $produto['foto'], $produto['preco'], $produto['id_categoria']);
         }
         return $listaProdutos;
     }
 
     public function buscaProdutos($termo){
-        $consulta = $this->conexao->query("SELECT * FROM produto where nome_produto like '%{$termo}%'");
+        $consulta = $this->conexao->query("SELECT * FROM produto where nome like '%{$termo}%'");
         $produtos = $consulta->fetchAll(PDO::FETCH_ASSOC);
         $listaProdutos = [];
         foreach ($produtos as $produto){
-            $listaProdutos[] = new Produto($produto['id_produto'], $produto['nome_produto'], $produto['descricao_produto'], $produto['preco_produto'], $produto['foto_produto'],  $produto['id_categoria']);
+            $listaProdutos[] = new Produto($produto['id'], $produto['nome'], $produto['descricao'], $produto['foto'], $produto['preco'],  $produto['id_categoria']);
         }
         return $listaProdutos;
 
@@ -47,7 +47,7 @@ class ProdutoCrud
         $produtos= $consulta->fetchAll(PDO::FETCH_ASSOC);
         $listaProdutos = [];
         foreach ($produtos as $produto){
-            $listaProdutos[] = new Produto($produto['id_produto'], $produto['nome_produto'], $produto['descricao_produto'], $produto['preco_produto'], $produto['foto_produto'], $produto['id_categoria']);
+            $listaProdutos[] = new Produto($produto['id'], $produto['nome'], $produto['descricao'], $produto['foto'], $produto['preco'], $produto['id_categoria']);
         }
         return $listaProdutos;
     }

@@ -6,4 +6,4 @@
  * Time: 20:01
  */
 
-define('BASE_URL', 'http://localhost/~speroni/lojinha/', true );
+define('BASE_URL', 'http://localhost/faculdade/poo2/lojinha2.0/lojinha-master', true );
